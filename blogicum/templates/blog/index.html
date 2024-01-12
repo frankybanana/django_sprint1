@@ -1,9 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Index</title>
-</head>
-<body>
-</body>
-</html>
+{% extends 'base.html' %}
+{% block content %}
+<h1>Лента записей</h1>
+{% for post in posts %}
+    <li>
+      <h3>{{ post.location }}</h3>
+      <p>{{ post.date }}</p>
+        <p>{{ post.category }}</p>
+        <p>{{ post.text }}</p>
+    </li>
+     {% if not forloop.last %}
+      <hr>
+    {% endif %}
+ {% endfor %}
+{% endblock %}

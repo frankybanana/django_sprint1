@@ -1,6 +1,18 @@
+{% load static %}
+ <style>
+    .left {
+      background: lightskyblue;
+    }
+  </style>
 <header>
+    <div class="left">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <div class="row">
+    <div class="col-md-4" ><img src="{% static 'img/logo.png' %}" height="30" alt=""></div>
+    <div class="col-md-4"><h5>Блогикум</h5></div>
         {% with request.resolver_match.view_name as view_name %}
-        <ul class="nav nav-pills">
+        <div class="col-md-4">
+            <ul class="nav nav-pills">
           <li class="nav-item">
             <a
               class="nav-link {% if view_name == 'blog:index' %} active {% endif %}"
@@ -27,4 +39,7 @@
           </li>
         </ul>
         {% endwith %}
+            </div>
+        </div>
+    </div>
     </header>
