@@ -1,19 +1,21 @@
 {% load static %}
- <style>
-    .header {
-      background: lightskyblue;
-      padding: 8px;
-    }
-  </style>
-<header>
-    <div class="header">
+<style>
+.my_class {
+display: flex;
+  padding-left: 120px;
+  flex-flow: row nowrap;
+  background: lightskyblue;
+}
+.blogicum {padding-left: 7px;
+font-size: 20px;
+
+}
+</style>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <div class="row">
-    <div class="col-md-4" ><img src="{% static 'img/logo.png' %}" height="30" alt=""></div>
-    <div class="col-md-4"><h5>Блогикум</h5></div>
+    <div class="my_class"><img src="{% static 'img/logo.png' %}" height="30" alt="">
+    <div class="blogicum">Блогикум</div>
         {% with request.resolver_match.view_name as view_name %}
-        <div class="col-md-4">
-            <ul class="nav nav-pills">
+    <ul class="nav nav-pills">
           <li class="nav-item">
             <a
               class="nav-link {% if view_name == 'blog:index' %} active {% endif %}"
@@ -39,8 +41,5 @@
             </a>
           </li>
         </ul>
-        {% endwith %}
-            </div>
         </div>
-    </div>
-    </header>
+        {% endwith %}
