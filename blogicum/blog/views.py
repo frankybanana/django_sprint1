@@ -47,7 +47,7 @@ posts = [
 
 def index(request):
     template_name = 'blog/index.html'
-    context = {'posts': reversed(posts)}
+    context = {'posts': reversed(posts), 'trimmed': True}
     return render(request, template_name, context)
 
 
@@ -61,7 +61,7 @@ def post_detail(request, post_id):
         raise Http404('Пост с указанным id не существует')
     else:
         template_name = 'blog/detail.html'
-        context = {'post': posts[i]}
+        context = {'post': posts[i], 'trimmed': False}
     return render(request, template_name, context)
 
 
