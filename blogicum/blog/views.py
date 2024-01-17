@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import Http404
 
 posts = [
     {
@@ -46,13 +47,21 @@ posts = [
 
 def index(request):
     template_name = 'blog/index.html'
-    context = {'posts': posts}
+    context = {'posts': reversed(posts)}
     return render(request, template_name, context)
 
 
-def post_detail(request, id):
-    template_name = 'blog/detail.html'
-    context = {'post': posts[id]}
+def post_detail(request, post_id):
+    flag = False
+    for i in range(len(posts)):
+        if post_id == posts[i]['id']:
+            flag = True
+            break
+    if flag is False:
+        raise Http404('Пост с указанным id не существует')
+    else:
+        template_name = 'blog/detail.html'
+        context = {'post': posts[i]}
     return render(request, template_name, context)
 
 
