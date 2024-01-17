@@ -1,12 +1,21 @@
-{% extends 'base.html' %}
-{% block content %}
 <style>
-  h1 {
-  margin-left: 120px;
-  margin-top: 100px;
-  margin-bottom: 50 px;
-  }
+#category {
+  margin-top: 50px;
+}
 </style>
 
-<h1>Публикации в категории - {{ slug }}</h1>
+{% extends 'base.html' %}
+<head>
+  <title>
+    {% block title %}Публикации в категории{% endblock %}
+  </title>
+</head>
+{% block content %}
+<main>
+  <div id="category">
+    <div class="container py-5">
+      <h1>Публикации в категории - {{ category_slug }}</h1>
+    </div>
+  </div>
+</main>
 {% endblock %}

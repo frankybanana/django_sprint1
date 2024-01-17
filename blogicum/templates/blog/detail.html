@@ -1,5 +1,3 @@
-{% extends 'base.html' %}
-{% block content %}
 <style>
   .this_style {
   margin-left: 120px;
@@ -10,6 +8,13 @@
   }
 </style>
 
+{% extends 'base.html' %}
+<head>
+  <title>
+    {% block title %}{{ post.location }}{% endblock %}
+  </title>
+</head>
+{% block content %}
 <div class="this_style">
 <ul>
     <div class="right"></div>

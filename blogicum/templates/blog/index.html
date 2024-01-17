@@ -1,5 +1,3 @@
-{% extends 'base.html' %}
-{% block content %}
 <style>
   ul {
   margin-left: 120px;
@@ -15,6 +13,13 @@
   }
 </style>
 
+{% extends 'base.html' %}
+<head>
+  <title>
+    {% block title %}Лента записей{% endblock %}
+  </title>
+</head>
+{% block content %}
 <h1>Лента записей</h1>
 <hr>
 {% for post in posts reversed%}
