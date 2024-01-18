@@ -44,23 +44,25 @@ posts = [
     },
 ]
 
+posts_dictionary = {}
+for i in range(len(posts)):
+    posts_dictionary[posts[i]['id']] = i
+
 
 def index(request):
     template_name = 'blog/index.html'
-    context = {'posts': reversed(posts), 'trimmed': True}
+    context = {'posts': reversed(posts)}
     return render(request, template_name, context)
 
 
 def post_detail(request, post_id):
     flag = False
-    for i in range(len(posts)):
-        if post_id == posts[i]['id']:
-            flag = True
-            break
+    if post_id in posts_dictionary:
+        flag = True
     if flag is False:
         raise Http404('Пост с указанным id не существует')
     template_name = 'blog/detail.html'
-    context = {'post': posts[i], 'trimmed': False}
+    context = {'post': posts[posts_dictionary[post_id]]}
     return render(request, template_name, context)
 
 

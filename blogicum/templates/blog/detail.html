@@ -1,22 +1,11 @@
-<!DOCTYPE html>
 {% extends 'base.html' %}
+{% block title %}{{ post.location }}{% endblock %}
 {% block content %}
-<html lang="ru">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="icon" href="/static/img/fav/favicon.ico" type="image">
-    <link rel="apple-touch-icon" sizes="180x180" href="/static/img/fav/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/static/img/fav/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/static/img/fav/favicon-16x16.png">
-    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
-    <title>{{ post.location }}</title>
-  </head>
-  <main>
-      <div class="container py-5">
-        <article>
-          {% include "includes/post.html" %}
-        </article>
-      </div>
-  </main>
+<main>
+  <div class="container py-5">
+    <article>
+    {% include "includes/post.html" %}
+    </article>
+  </div>
+</main>
 {% endblock %}
