@@ -59,9 +59,8 @@ def post_detail(request, post_id):
             break
     if flag is False:
         raise Http404('Пост с указанным id не существует')
-    else:
-        template_name = 'blog/detail.html'
-        context = {'post': posts[i], 'trimmed': False}
+    template_name = 'blog/detail.html'
+    context = {'post': posts[i], 'trimmed': False}
     return render(request, template_name, context)
 
 

@@ -1,63 +1,35 @@
 {% load static %}
-<style>
-header {
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 999;
-  display: flex;
-  position: fixed;
-  padding: 15px 20px;
-  align-items: center;
-  background-color: lightskyblue;
-}
-
-.logo {
-font-size: 20px;
-  font-weight: bold;
-  align-items: center;
-  display: inline-flex;
-  padding-left: 100px;
-}
-.blogicum {
-font-size: 22px;
-background: lightskyblue;
-margin-left: 5px;
-}
-.menu {
-	list-style: none;
-	position: absolute;
-	top: 10px;
-	right: 100px;
-	lightskyblue;
-}
-</style>
-
 <header>
-  <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <div class="logo"><img src="{% static 'img/logo.png' %}" height="30" alt=""></div>
-      <div class="blogicum">Блогикум</div>
-      {% with request.resolver_match.view_name as view_name %}
-      <nav class="menu">
-        <ul class="nav nav-pills">
-          <li class="nav-item">
-            <a class="nav-link {% if view_name == 'blog:index' %}
-             active {% endif %}" href="{% url 'blog:index' %}">
-               Лента записей
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if view_name == 'pages:about' %}
-            active {% endif %}" href="{% url 'pages:about' %}">
-              О проекте</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link {% if view_name == 'pages:rules' %}
-            active {% endif %}" href="{% url 'pages:rules' %}">
-              Наши правила
-            </a>
-          </li>
-        </ul>
-       </nav>
-      {% endwith %}
-</header>
+      <nav class="navbar navbar-light" style="background-color: lightskyblue">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">
+            <img src="/static/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            Блогикум
+          </a>
+          {% with request.resolver_match.view_name as view_name %}
+          <nav class="menu">
+          <ul class="nav  nav-pills">
+            <li class="nav-item">
+              <a class="nav-link {% if view_name == 'blog:index' %}
+               active {% endif %}" href="{% url 'blog:index' %}">
+                 Лента записей
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if view_name == 'pages:about' %}
+              active {% endif %}" href="{% url 'pages:about' %}">
+                О проекте
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link {% if view_name == 'pages:rules' %}
+              active {% endif %}" href="{% url 'pages:rules' %}">
+                Наши правила
+              </a>
+            </li>
+          </ul>
+            </nav>
+        </div>
+      </nav>
+    {% endwith %}
+    </header>
