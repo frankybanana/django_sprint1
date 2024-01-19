@@ -44,9 +44,7 @@ posts = [
     },
 ]
 
-posts_dictionary = {}
-for i in range(len(posts)):
-    posts_dictionary[posts[i]['id']] = i
+posts_additional = {post['id']: post for post in posts}
 
 
 def index(request):
@@ -56,13 +54,10 @@ def index(request):
 
 
 def post_detail(request, post_id):
-    flag = False
-    if post_id in posts_dictionary:
-        flag = True
-    if flag is False:
+    if post_id not in posts_additional:
         raise Http404('Пост с указанным id не существует')
     template_name = 'blog/detail.html'
-    context = {'post': posts[posts_dictionary[post_id]]}
+    context = {'post': posts_additional[post_id]}
     return render(request, template_name, context)
 
 
